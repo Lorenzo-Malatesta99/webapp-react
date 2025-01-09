@@ -5,13 +5,13 @@ import { Outlet } from "react-router-dom";
 
 function DefaultLayout() {
   return (
-    <div>
+    <>
       <Header />
-      <main>
+      <main className="flex-grow-1">
         <Outlet />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
 
