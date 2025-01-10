@@ -16,9 +16,7 @@ function FilmCard({ film }) {
           <p>Del {release_year}</p>
         </div>
         <div>
-          <Link className="custom-btn" to={`/films/${id}`}>
-            View Details
-          </Link>
+            <Link to={`/films/${id}`} className="stretched-link"></Link>
         </div>
       </div>
     </div>

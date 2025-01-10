@@ -18,6 +18,7 @@ a {
   --white-color: rgb(255, 255, 255);
   --grey-color: rgb(128, 128, 128);
   --light-grey-color: rgb(211, 211, 211);
+  --second-brand-color: rgb(32, 20, 44)
 }
 
 /* customs */
@@ -88,3 +89,54 @@ footer {
     font-size: 1em;
     margin-bottom: 10px;
 }
+
+.brand-cl{
+  color: var(--yellow-color);
+}
+
+.brand-cl-bg{
+  background-color: var(--yellow-color);
+}
+
+.brand-cl-bg:hover{
+  background-color: var(--grey-color);
+}
+
+.bg-header{
+  background-color: rgb(32, 20, 44)
+}
+
+.hover:hover{
+  transition: 0.3s;
+  color: var(--yellow-color);
+}
+
+.detail-image{
+  width: 200px;
+  border: 1px solid var(--white-color);
+  border-radius: 10px; 
+}
+
+.card-review{
+  background-color: var(--second-brand-color);
+  color: var(--white-color);
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.sec-color{
+  background-color: var(--second-brand-color);
+  color: var(--white-color);
+}
+
+
+.sticky-button {
+    position: sticky;
+    top: 20px;
+    left: 0px; 
+    z-index: 1000; 
+}
+
+
+
