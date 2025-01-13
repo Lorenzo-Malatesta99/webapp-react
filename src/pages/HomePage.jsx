@@ -7,13 +7,12 @@ function HomePage() {
   const [search, setSearch] = useState("");
 
   function fetchFilms() {
-    console.log("Ricerca avviata con query:", search); // Debug
     axios
       .get("http://localhost:3000/api/films", {
         params: { search: search },
       })
       .then((response) => {
-        console.log("Dati recuperati:", response.data); // Debug
+        
         setFilms(response.data);
       })
       .catch((err) => {
@@ -61,7 +60,7 @@ function HomePage() {
             ))}
           </ul>
         ) : (
-          <div className="italic text-center text-muted">Nessun risultato</div>
+          <div className="italic text-center">Nessun risultato</div>
         )}
       </section>
     </>
