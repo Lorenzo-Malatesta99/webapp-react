@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import FilmCard from "../components/FilmCard";
 import axios from "axios";
+import { useContext } from "react";
+import GlobalContext from "../context/globalContext";
+
 
 function HomePage() {
+  const { setIsLoading } = useContext(GlobalContext);
   const [films, setFilms] = useState([]);
   const [search, setSearch] = useState("");
 
   function fetchFilms() {
+
+    setIsLoading(true);
+
     axios
       .get("http://localhost:3000/api/films", {
         params: { search: search },
@@ -15,9 +22,12 @@ function HomePage() {
         
         setFilms(response.data);
       })
+      
       .catch((err) => {
         console.error("Errore nella richiesta:", err);
-      });
+      })
+      .finally(() => {  setIsLoading(false); });
+    
   }
 
   function searchFilms(e) {

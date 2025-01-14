@@ -4,6 +4,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import FormReview from "../components/FormReview";
+import { useContext } from "react";
+import GlobalContext from "../context/globalContext";
+
 
 function MoviePage() {
   const { id } = useParams();
@@ -13,8 +16,11 @@ function MoviePage() {
     ? movie.title.replace(/\s+/g, "_").toLowerCase()
     : "";
   const imageUrl = movie ? `http://localhost:3000/${formattedTitle}.jpg` : "";
+  const { setIsLoading } = useContext(GlobalContext);
 
   function fetchMovie() {
+    setIsLoading(true);
+
     axios
       .get(`http://localhost:3000/api/films/${id}`)
       .then((response) => {
@@ -22,7 +28,10 @@ function MoviePage() {
       })
       .catch((err) => {
         console.error("Errore nella richiesta:", err);
-      });
+      })
+      .finally(() => {
+        setIsLoading(false)
+  });
   }
 
   useEffect(() => {
@@ -30,7 +39,7 @@ function MoviePage() {
   }, [id]);
 
   return (
-    <div>
+    movie && <div>
       <button className="btn fs-1 brand-cl-bg py-0 px-3 mb-0 m-4 sticky-button">
         <NavLink to="/">&lt;</NavLink>
       </button>

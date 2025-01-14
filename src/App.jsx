@@ -8,20 +8,27 @@ import MoviePage from "./pages/MoviePage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./App.css";
+import GlobalContext from "./context/globalContext";
+import { useState } from "react";
 
 function App() {
+
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<DefaultLayout />}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/films/:id" element={<MoviePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <GlobalContext.Provider value={{ isLoading, setIsLoading }}>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<DefaultLayout />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/films/:id" element={<MoviePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </GlobalContext.Provider>
     </>
   );
 }
